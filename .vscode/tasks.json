@@ -1,0 +1,42 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build SFML App",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-c",
+        "main.cpp",
+        "particle.cpp",
+        "solver.cpp",
+        "renderer.cpp"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "Compile source files"
+    },
+    {
+      "label": "Link SFML App",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "main.o",
+        "particle.o",
+        "solver.o",
+        "renderer.o",
+        "-o",
+        "sfml-app",
+        "-lsfml-graphics",
+        "-lsfml-window",
+        "-lsfml-system"
+      ],
+      "group": "build",
+      "dependsOn": "Build SFML App",
+      "problemMatcher": []
+    }
+  ]
+}
